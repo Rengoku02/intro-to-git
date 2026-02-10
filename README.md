@@ -1,6 +1,6 @@
 # Introduction to Git
 
-A hands-on, tutorial-style repository for learning Git from the ground up. Each section includes explanations, real commands, and exercises you can practice on your own machine.
+A repository for learning Git from the start. Each section includes explanations, commands, and exercises you can practice on your own machine.
 
 ## Prerequisites
 
@@ -30,10 +30,4 @@ A hands-on, tutorial-style repository for learning Git from the ground up. Each 
 | 5 | [Advanced Tips](05-advanced-tips/README.md) | `stash`, `cherry-pick`, `reflog`, `reset` vs `revert`, `.gitignore` |
 | - | [Cheat Sheet](cheatsheet.md) | Quick-reference for all commands |
 
-## Who Is This For?
 
-Developers who have some experience with Git but want to solidify their understanding and learn collaboration workflows, branching strategies, and advanced techniques.
-
----
-
-*Created for a Git seminar presentation.*
