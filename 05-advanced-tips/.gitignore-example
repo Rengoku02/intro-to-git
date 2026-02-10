@@ -1,0 +1,43 @@
+# ===================
+# Python .gitignore
+# ===================
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+.env
+
+# ===================
+# Node.js .gitignore
+# ===================
+# node_modules/
+# npm-debug.log
+# .env
+
+# ===================
+# Java .gitignore
+# ===================
+# *.class
+# *.jar
+# target/
+# .gradle/
+
+# ===================
+# General / IDE
+# ===================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===================
+# Logs and Databases
+# ===================
+*.log
+*.sql
+*.sqlite
