@@ -76,10 +76,6 @@ After:    main: A---B---C---D
 
 When both branches have new commits, Git creates a **merge commit**:
 
-```bash
-git switch main
-git merge feature-login
-```
 
 ```
 Before:   main: A---B---E
