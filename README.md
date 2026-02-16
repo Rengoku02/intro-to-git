@@ -1,6 +1,6 @@
 # Introduction to Git for Bioinformatics
 
-A hands-on tutorial for learning Git, designed for bioinformatics researchers and students. Each section includes explanations, real commands, and exercises you can follow on your own machine — no cloning required.
+A tutorial for learning Git.
 
 ## Why Git in Bioinformatics?
 
