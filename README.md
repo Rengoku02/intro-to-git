@@ -19,12 +19,6 @@ If you've ever had files named `analysis_v2_final_FINAL.py`, Git is the solution
 - **Git** installed on your machine ([Download Git](https://git-scm.com/downloads))
 - A **GitHub account** ([Sign up](https://github.com/signup))
 
-## How to Use This Tutorial
-
-1. **Read through each section** in order — each one builds on the previous
-2. **Follow the exercises on your own machine** — each exercise is self-contained and walks you through creating files and repos from scratch
-3. **Practice is key** — reading alone won't make Git stick. Try every exercise.
-
 ## Table of Contents
 
 | # | Section | Topics |
@@ -36,10 +30,3 @@ If you've ever had files named `analysis_v2_final_FINAL.py`, Git is the solution
 | 5 | [Advanced Tips](05-advanced-tips/README.md) | `stash`, `cherry-pick`, `reflog`, `reset` vs `revert`, `.gitignore` |
 | - | [Cheat Sheet](cheatsheet.md) | Quick-reference for all commands |
 
-## Who Is This For?
-
-Students and researchers in bioinformatics who want to use Git for reproducible, collaborative computational work.
-
----
-
-*Created for the Reproducible Bioinformatics class seminar.*
