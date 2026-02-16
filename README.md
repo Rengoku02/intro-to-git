@@ -18,9 +18,6 @@ If you've ever had files named `analysis_v2_final_FINAL.py`, Git is the solution
 
 - **Git** installed on your machine ([Download Git](https://git-scm.com/downloads))
 - A **GitHub account** ([Sign up](https://github.com/signup))
-- A **terminal** (Terminal on macOS/Linux, Git Bash on Windows)
-- **Python 3** installed (for the exercise scripts)
-- Basic comfort with the command line
 
 ## How to Use This Tutorial
 
