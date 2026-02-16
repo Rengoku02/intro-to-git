@@ -144,7 +144,7 @@ After:    main: A---B---E
 
 ## Exercises
 
-Use the `git-bio-project` repo you created in Section 1 (or create a new one with `mkdir git-bio-project && cd git-bio-project && git init`).
+create a new one with `mkdir git-bio-project && cd git-bio-project && git init`.
 
 ### Exercise 1: Basic Branching
 
