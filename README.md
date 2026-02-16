@@ -8,7 +8,7 @@ Reproducibility is a cornerstone of good science. In bioinformatics, your analys
 
 - **Track every change** to your analysis scripts, pipelines, and parameters — so you can always reproduce a result or trace how it was generated
 - **Version your workflows** — whether you're writing R scripts, Python pipelines, Snakemake/Nextflow workflows, or shell scripts for sequence processing
-- **Collaborate on research** — share code with lab members, reviewers, and the broader community via GitHub
+- **Collaborate on research** — share code with lab members via GitHub
 - **Recover from mistakes** — accidentally break a working pipeline? Git lets you roll back to any previous version
 - **Document your process** — commit messages serve as a lab notebook for your computational work
 
