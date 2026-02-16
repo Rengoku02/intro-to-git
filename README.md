@@ -26,7 +26,6 @@ If you've ever had files named `analysis_v2_final_FINAL.py`, Git is the solution
 | 1 | [Git Basics](01-basics/README.md) | `init`, `clone`, `add`, `commit`, `status`, `log`, `diff`, `config` |
 | 2 | [Branching & Merging](02-branching/README.md) | `branch`, `switch`, `merge`, `rebase`, conflict resolution |
 | 3 | [Remotes & GitHub](03-remote-and-github/README.md) | `remote`, `push`, `pull`, `fetch`, forking, pull requests |
-| 4 | [Workflows](04-workflows/README.md) | Git Flow, GitHub Flow, trunk-based development, tagging |
-| 5 | [Advanced Tips](05-advanced-tips/README.md) | `stash`, `cherry-pick`, `reflog`, `reset` vs `revert`, `.gitignore` |
+| 4 | [Workflows & Beyond](04-workflows/README.md) | Git Flow, GitHub Flow, trunk-based, tagging, `stash`, `cherry-pick`, `reflog`, `reset` vs `revert`, `.gitignore` |
 | - | [Cheat Sheet](cheatsheet.md) | Quick-reference for all commands |
 
