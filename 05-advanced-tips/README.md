@@ -200,25 +200,49 @@ git clean -fd
 
 ## Exercises
 
+Use the `git-bio-project` repo from the previous sections.
+
 ### Exercise 1: Practice Stashing
 
-1. Modify any example file but don't commit
-2. Stash the changes: `git stash push -m "My experiment"`
+1. Open any of your Python files and make a change (e.g., add a comment) — don't commit
+2. Stash the changes: `git stash push -m "WIP: experimenting with output format"`
 3. Verify your working directory is clean: `git status`
 4. Restore the changes: `git stash pop`
+5. Verify the change is back with `git diff`
 
 ### Exercise 2: Use the Reflog
 
-1. Make a commit
+1. Make a small commit (e.g., add a comment to any file)
 2. Reset it away: `git reset --hard HEAD~1`
 3. Use `git reflog` to find the lost commit's hash
 4. Recover it: `git reset --hard <hash>`
+5. Verify the commit is back: `git log --oneline -3`
 
 ### Exercise 3: Create a .gitignore
 
-1. Create some files you want to ignore (e.g., `test.log`, `secrets.env`)
-2. Create a `.gitignore` file and add patterns to ignore them
+1. Create some files that a bioinformatics project would typically ignore:
+   ```bash
+   touch results.log alignment_output.sam large_genome.fasta.gz
+   mkdir __pycache__
+   touch __pycache__/module.cpython-39.pyc
+   ```
+2. Create a `.gitignore` file with patterns to ignore them:
+   ```gitignore
+   # Log files
+   *.log
+
+   # Large data files
+   *.sam
+   *.bam
+   *.fasta.gz
+   *.fastq.gz
+
+   # Python cache
+   __pycache__/
+   *.pyc
+   ```
 3. Run `git status` — the ignored files shouldn't appear
+4. Stage and commit: `git add .gitignore && git commit -m "Add .gitignore for bio project"`
 
 ---
 

@@ -1,23 +1,32 @@
-# Introduction to Git
+# Introduction to Git for Bioinformatics
 
-A repository for learning Git from the start. Each section includes explanations, commands, and exercises you can practice on your own machine.
+A hands-on tutorial for learning Git, designed for bioinformatics researchers and students. Each section includes explanations, real commands, and exercises you can follow on your own machine — no cloning required.
+
+## Why Git in Bioinformatics?
+
+Reproducibility is a cornerstone of good science. In bioinformatics, your analysis code **is** your methods section. Git helps you:
+
+- **Track every change** to your analysis scripts, pipelines, and parameters — so you can always reproduce a result or trace how it was generated
+- **Version your workflows** — whether you're writing R scripts, Python pipelines, Snakemake/Nextflow workflows, or shell scripts for sequence processing
+- **Collaborate on research** — share code with lab members, reviewers, and the broader community via GitHub
+- **Recover from mistakes** — accidentally break a working pipeline? Git lets you roll back to any previous version
+- **Document your process** — commit messages serve as a lab notebook for your computational work
+
+If you've ever had files named `analysis_v2_final_FINAL.py`, Git is the solution.
 
 ## Prerequisites
 
 - **Git** installed on your machine ([Download Git](https://git-scm.com/downloads))
 - A **GitHub account** ([Sign up](https://github.com/signup))
 - A **terminal** (Terminal on macOS/Linux, Git Bash on Windows)
+- **Python 3** installed (for the exercise scripts)
 - Basic comfort with the command line
 
-## How to Use This Repo
+## How to Use This Tutorial
 
-1. **Clone this repository:**
-   ```bash
-   git clone https://github.com/<your-username>/intro-to-git.git
-   cd intro-to-git
-   ```
-2. **Follow the sections in order** — each one builds on the previous.
-3. **Try every exercise** — reading alone won't make Git stick. Practice is key.
+1. **Read through each section** in order — each one builds on the previous
+2. **Follow the exercises on your own machine** — each exercise is self-contained and walks you through creating files and repos from scratch
+3. **Practice is key** — reading alone won't make Git stick. Try every exercise.
 
 ## Table of Contents
 
@@ -30,4 +39,10 @@ A repository for learning Git from the start. Each section includes explanations
 | 5 | [Advanced Tips](05-advanced-tips/README.md) | `stash`, `cherry-pick`, `reflog`, `reset` vs `revert`, `.gitignore` |
 | - | [Cheat Sheet](cheatsheet.md) | Quick-reference for all commands |
 
+## Who Is This For?
 
+Students and researchers in bioinformatics who want to use Git for reproducible, collaborative computational work.
+
+---
+
+*Created for the Reproducible Bioinformatics class seminar.*

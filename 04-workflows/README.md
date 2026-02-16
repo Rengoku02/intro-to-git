@@ -119,28 +119,45 @@ On GitHub, you can create a **Release** from a tag:
 
 ## Exercises
 
+Use the `git-bio-project` repo you pushed to GitHub in Section 3.
+
 ### Exercise 1: Practice GitHub Flow
 
-1. Create a branch: `git switch -c feature/add-subtract`
-2. Add a `subtract()` function to any example file
-3. Commit and push: `git push -u origin feature/add-subtract`
-4. Open a PR on GitHub
-5. Merge the PR
-6. Pull the merged changes: `git pull origin main`
+1. Create a branch: `git switch -c feature/add-reverse-complement`
+2. Create a new file called `reverse_complement.py`:
+   ```python
+   COMPLEMENT = {"A": "T", "T": "A", "G": "C", "C": "G"}
 
-### Exercise 2: Create a Tag
+   def reverse_complement(sequence):
+       """Return the reverse complement of a DNA sequence."""
+       return "".join(COMPLEMENT[base] for base in reversed(sequence.upper()))
+
+   if __name__ == "__main__":
+       seq = "ATGCGA"
+       print(f"Reverse complement of {seq}: {reverse_complement(seq)}")
+   ```
+3. Commit and push:
+   ```bash
+   git add reverse_complement.py
+   git commit -m "Add reverse complement function"
+   git push -u origin feature/add-reverse-complement
+   ```
+4. Open a PR on GitHub, review the diff, and merge it
+5. Pull the merged changes locally: `git pull origin main`
+
+### Exercise 2: Tag a Release
 
 1. Make sure you're on `main` with your latest changes
-2. Create an annotated tag: `git tag -a v1.0.0 -m "First release"`
+2. Create an annotated tag: `git tag -a v1.0.0 -m "First release of bio-tools"`
 3. Push the tag: `git push origin v1.0.0`
 4. View it on GitHub under "Releases"
 
 ### Exercise 3: Discuss with Your Team
 
-Consider your current or future projects and discuss:
-- Which workflow fits best and why?
-- What branch naming convention would you use?
-- How often should you deploy?
+Consider a multi-lab genomics collaboration and discuss:
+- Which workflow would fit best — GitHub Flow, Git Flow, or trunk-based? Why?
+- How would you name branches for different analyses (e.g., `analysis/rnaseq-deseq2`, `pipeline/variant-calling`)?
+- How often should you tag stable versions of your analysis pipelines?
 
 ---
 
