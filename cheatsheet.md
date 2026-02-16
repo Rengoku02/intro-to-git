@@ -89,7 +89,6 @@
 
 | Command | Description |
 |---------|-------------|
-| `git reflog` | Show history of HEAD movements |
 | `git blame <file>` | Show who changed each line |
 | `git bisect start` | Start binary search for a bug |
 | `git cherry-pick <commit>` | Apply a specific commit |

@@ -175,33 +175,6 @@ git cherry-pick abc1234..def5678
 - A bugfix on `develop` that you also need on `main`
 - Pulling a single feature commit without merging everything else
 
-## git reflog — Your Safety Net
-
-Reflog records every time HEAD moves — even actions that `git log` doesn't show (like resets, rebases, and amended commits). It's your undo history.
-
-```bash
-# View the reflog
-git reflog
-
-# Example output:
-# abc1234 HEAD@{0}: commit: Add new feature
-# def5678 HEAD@{1}: checkout: moving from main to feature
-# ghi9012 HEAD@{2}: reset: moving to HEAD~1
-
-# Recover a "lost" commit
-git checkout abc1234
-
-# Or reset to a previous state
-git reset --hard HEAD@{2}
-```
-
-**Reflog is a lifesaver when:**
-- You accidentally deleted a branch
-- A rebase went wrong
-- You used `reset --hard` and want to undo it
-
-Note: Reflog entries expire after 90 days by default.
-
 ## reset vs revert — Undoing Changes
 
 ### `git reset` — Move HEAD backward (rewrites history)
