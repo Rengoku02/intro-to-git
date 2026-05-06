@@ -211,6 +211,24 @@ git revert --no-commit abc1234
 
 **Rule of thumb:** Use `revert` for commits already pushed to a shared branch. Use `reset` only for local, unpushed commits.
 
+## git reflog — Your safety net
+
+Git keeps a log of every place `HEAD` has been (commits, resets, rebases, even deleted branches) for ~90 days by default. If you `reset --hard` and panic, **don't** start over — check the reflog:
+
+```bash
+# Show recent HEAD positions
+git reflog
+
+# Recover a "lost" commit by checking it out or branching from it
+git checkout abc1234
+git switch -c recovered-work abc1234
+
+# Reset back to where you were before a bad operation
+git reset --hard HEAD@{2}
+```
+
+Almost any "I lost my work" situation is solvable as long as the commit existed and the reflog hasn't expired.
+
 ## .gitignore — Excluding Files from Tracking
 
 A `.gitignore` file tells Git which files to ignore. Place it in the root of your repository.
@@ -256,7 +274,7 @@ git add -f secret-but-needed.env
 git rm --cached file-to-untrack.txt
 ```
 
-See [.gitignore-example](.gitignore-example) for templates.
+See [.gitignore-example](../.gitignore-example) at the repo root for a curated bioinformatics template (BAM/SAM/FASTQ, conda envs, Snakemake/Nextflow work directories, etc.).
 
 ## Other Useful Commands
 
@@ -289,4 +307,116 @@ git clean -f
 # Delete untracked files and directories
 git clean -fd
 ```
+
+---
+
+## Git LFS — Large files for bioinformatics
+
+GitHub rejects any single file > 100 MB. Bioinformatics workflows produce these constantly: BAM, FASTQ, reference genomes, large `.rds` objects. **Git LFS** (Large File Storage) replaces the file in your repo with a small pointer and stores the actual bytes on a separate LFS server.
+
+```bash
+# One-time install (per machine)
+git lfs install
+
+# Track patterns — writes to .gitattributes (commit it)
+git lfs track "*.bam"
+git lfs track "*.fastq.gz"
+git lfs track "*.rds"
+git add .gitattributes
+
+# Now stage and commit BAM/FASTQ as usual — LFS handles the rest
+git add sample.bam
+git commit -m "Add aligned reads"
+git push
+```
+
+**When *not* to use LFS:** raw input data and large derived outputs usually don't belong in Git at all. Better options:
+- Keep raw data outside the repo (a project drive, S3, institutional storage) and reference it by path
+- [DVC](https://dvc.org) for versioning data alongside code without the LFS bandwidth limits
+- [Zenodo](https://zenodo.org) for archiving final datasets with a citable DOI
+
+Use LFS for moderate-size artifacts you genuinely need version-tracked (small reference panels, plot bundles, model files).
+
+## Pre-commit hooks
+
+Git can run scripts automatically at key moments — most useful is **pre-commit**, which runs before a commit is finalized. Use the [pre-commit](https://pre-commit.com) framework rather than hand-writing hooks:
+
+```bash
+pip install pre-commit
+
+# In your repo, create .pre-commit-config.yaml
+cat > .pre-commit-config.yaml <<'EOF'
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files   # blocks accidental >500 kB commits
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.0
+    hooks:
+      - id: ruff                      # Python linting
+EOF
+
+pre-commit install
+```
+
+For bioinformatics, the `check-added-large-files` hook alone has saved many people from accidentally committing a 5 GB FASTQ.
+
+## GitHub Actions — automate on every push/PR
+
+GitHub Actions runs CI workflows defined in `.github/workflows/*.yml`. Useful for:
+- Running unit tests on every PR
+- Executing a small Snakemake / Nextflow test profile on a tiny dataset
+- Rendering and publishing analysis reports
+- Linting code style automatically
+
+Minimal example:
+
+```yaml
+# .github/workflows/test.yml
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: pytest
+```
+
+## Signing commits
+
+Commits can be cryptographically signed so reviewers know they actually came from you:
+
+```bash
+# SSH signing (Git 2.34+, simplest if you already use SSH for GitHub)
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true
+```
+
+Then add the same SSH key under GitHub → Settings → SSH and GPG keys → "Signing key". Signed commits show a "Verified" badge on GitHub.
+
+## Submodules — embedding another repo
+
+Submodules let one repo include another at a specific commit. Common in bioinformatics when a project depends on a pinned version of a pipeline:
+
+```bash
+# Add a submodule
+git submodule add https://github.com/snakemake-workflows/rna-seq-star-deseq2.git pipelines/rnaseq
+
+# Clone a repo that contains submodules
+git clone --recurse-submodules <url>
+
+# Update submodules in an already-cloned repo
+git submodule update --init --recursive
+```
+
+Submodules pin to a specific commit, not a branch — that's a feature for reproducibility, but expect occasional confusion when pulling.
 

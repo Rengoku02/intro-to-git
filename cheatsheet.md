@@ -24,10 +24,13 @@
 | `git add <file>` | Stage a file |
 | `git add .` | Stage all changes |
 | `git commit -m "message"` | Commit staged changes |
+| `git commit --amend` | Add changes / fix message of the last commit (local only) |
 | `git diff` | Show unstaged changes |
 | `git diff --staged` | Show staged changes |
 | `git log --oneline` | Compact commit history |
 | `git log --oneline --graph --all` | Visual branch history |
+| `git log -p` | Show patch (diff) for each commit |
+| `git log -5` | Show the last 5 commits |
 
 ## Branching & Merging
 
@@ -38,7 +41,9 @@
 | `git switch <name>` | Switch to a branch |
 | `git switch -c <name>` | Create and switch to a branch |
 | `git merge <branch>` | Merge branch into current |
+| `git merge --abort` | Bail out of a merge in progress |
 | `git rebase <branch>` | Rebase current onto branch |
+| `git rebase --abort` | Bail out of a rebase in progress |
 | `git branch -d <name>` | Delete a merged branch |
 | `git branch -D <name>` | Force-delete a branch |
 
@@ -64,6 +69,7 @@
 | `git reset HEAD~1` | Undo last commit, unstage changes |
 | `git reset --hard HEAD~1` | Undo last commit, discard changes |
 | `git revert <commit>` | Create a new commit that undoes a commit |
+| `git reflog` | Show every recent HEAD position — recover "lost" commits |
 
 ## Stashing
 
@@ -104,3 +110,17 @@
 | `!important.log` | Exception — track this file |
 | `**/temp` | `temp` in any subdirectory |
 | `doc/*.txt` | `.txt` files in `doc/` only |
+
+| Command | Description |
+|---------|-------------|
+| `git status --ignored` | Show files Git is currently ignoring |
+| `git rm --cached <file>` | Stop tracking a file but keep it on disk |
+
+## Git LFS (Large Files)
+
+| Command | Description |
+|---------|-------------|
+| `git lfs install` | One-time install per machine |
+| `git lfs track "*.bam"` | Track a pattern via LFS (writes `.gitattributes`) |
+| `git lfs ls-files` | List files currently stored in LFS |
+| `git lfs pull` | Fetch LFS-tracked file contents |

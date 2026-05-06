@@ -10,11 +10,7 @@ Key concepts:
 - **Staging area (index)**: A holding area where you prepare changes before committing
 - **Working directory**: The files you see and edit on your machine
 
-## Best Git resource
-[Git Book] (https://git-scm.com/book/en/v2/)
-[Git for beginners Mosh] (https://www.youtube.com/watch?v=8JJ101D3knE)
-[git Tutorial(]https://www.youtube.com/watch?v=mAFoROnOfHs)
-
+> **Tip:** Prefer `git switch` and `git restore` (Git 2.23+) over `git checkout`. `checkout` still works but conflates two unrelated operations (changing branches vs. discarding changes); the newer pair is clearer and recommended for everything in this tutorial.
 
 ## Setting Up Git
 
@@ -57,7 +53,10 @@ This downloads the full repository (all files + history) to your machine.
 
 ```bash
 git status
-git status --short or git status -s
+
+# Short / compact form
+git status --short
+git status -s
 ```
 
 Shows which files are:
@@ -92,12 +91,13 @@ git commit
 #Commit without staging
 git commit -a -m "Your Message"
 
-#If you need to revert the latest commit
+# Undo the last commit, keep the changes in your working tree (NOT a true revert —
+# it rewrites local history. For commits already pushed, use `git revert` instead.)
 git reset HEAD~
 ```
 
 **Good commit messages:**
-- Use imperative mood: "Add feature" not "Added feature"
+- Use **imperative mood**: `Add feature` ✅ — not `Added feature` ❌ or `Adding feature` ❌
 - Keep the first line under 50 characters
 - Add details in the body if needed
 
@@ -134,8 +134,7 @@ echo "*.log" > .gitignore
 - but do track lib.a, even though you're ignoring .a files above -> !lib.a
 - only ignore the TODO file in the current directory, not subdir/TODO -> /TODO
 - ignore all files in any directory named build -> build/
-- ignore all .pdf files in the doc/ directory and any of its subdirectories -> 
-doc/**/*.pdf
+- ignore all .pdf files in the doc/ directory and any of its subdirectories -> `doc/**/*.pdf`
 
 ### `git diff` — See what changed
 
@@ -146,13 +145,14 @@ git diff
 
 ## The Git Workflow (Modify → Stage → Commit)
 
+```
 Working Directory    Staging Area    Repository
       |<---git reset-----|               |
       |--- git add ----->|               |
       |                  |-- git commit->|
       |                  |               |
       |<---------- git checkout ---------|
-
+```
 
 1. **Edit** files in your working directory
 2. **Stage** the changes you want to include (`git add`)
@@ -160,13 +160,15 @@ Working Directory    Staging Area    Repository
 
 ## Reversing changes
 
-### `git amend` - add files to the last commit
+### `git commit --amend` — add files to the last commit
 
 ```bash
 $ git commit -m 'Initial commit'
 $ git add forgotten_file
 $ git commit --amend
 ```
+
+> Only amend commits that haven't been pushed — amending rewrites history.
 
 ### `git reset` - unstage staged files
 
@@ -181,3 +183,10 @@ git restore --staged <filename>
 git checkout -- <filename>
 git restore <filename>
 ```
+
+## Further reading
+
+- [Pro Git book (free)](https://git-scm.com/book/en/v2/) — the canonical reference
+- [Git for beginners — Mosh](https://www.youtube.com/watch?v=8JJ101D3knE)
+- [Git tutorial video](https://www.youtube.com/watch?v=mAFoROnOfHs)
+

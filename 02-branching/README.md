@@ -112,6 +112,20 @@ print("Hello from feature branch")
    git commit -m "Resolve merge conflict"
    ```
 
+### Bail out of a conflict
+
+If you'd rather abandon the merge or rebase entirely and go back to the state before you started:
+
+```bash
+# During a merge
+git merge --abort
+
+# During a rebase
+git rebase --abort
+```
+
+Both restore your working tree to the pre-operation state — useful when a conflict is bigger than expected and you want to regroup.
+
 ## Rebasing
 
 Rebase replays your commits **on top of** another branch, creating a linear history:

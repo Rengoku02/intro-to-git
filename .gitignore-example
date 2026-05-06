@@ -1,0 +1,133 @@
+# =============================================================================
+# .gitignore template for bioinformatics projects
+# =============================================================================
+# Copy to .gitignore in your project root and prune as needed.
+# Rule of thumb: data and large binaries belong in storage/LFS, not in Git.
+
+# -----------------------------------------------------------------------------
+# Sequencing data — almost never commit raw reads
+# -----------------------------------------------------------------------------
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.bam.bai
+*.cram
+*.cram.crai
+*.sam
+
+# Reference genomes and indices
+*.fa
+*.fasta
+*.fa.gz
+*.fasta.gz
+*.fai
+*.dict
+*.gff
+*.gff3
+*.gtf
+# BWA / bowtie2 / hisat2 / STAR indices
+*.bt2
+*.amb
+*.ann
+*.bwt
+*.pac
+*.sa
+*.ht2
+STAR_index/
+star_index/
+
+# Variant calls (often huge)
+*.vcf
+*.vcf.gz
+*.vcf.gz.tbi
+*.bcf
+
+# -----------------------------------------------------------------------------
+# Single-cell / large analysis outputs
+# -----------------------------------------------------------------------------
+*.h5
+*.h5ad
+*.loom
+*.mtx
+*.mtx.gz
+*.rds
+*.RDS
+*.RData
+
+# -----------------------------------------------------------------------------
+# Workflow managers
+# -----------------------------------------------------------------------------
+# Snakemake
+.snakemake/
+*.snakemake.log
+
+# Nextflow
+work/
+.nextflow/
+.nextflow.log*
+
+# Common Workflow Language
+cwltool_*.json
+
+# -----------------------------------------------------------------------------
+# Environments / package managers
+# -----------------------------------------------------------------------------
+# Conda
+.conda/
+envs/*/
+!envs/*.yml
+!envs/*.yaml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# R
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+.Rproj.user/
+
+# -----------------------------------------------------------------------------
+# Editors / IDEs / OS
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# -----------------------------------------------------------------------------
+# Logs / scratch
+# -----------------------------------------------------------------------------
+*.log
+logs/
+tmp/
+scratch/
+
+# -----------------------------------------------------------------------------
+# Jupyter
+# -----------------------------------------------------------------------------
+.ipynb_checkpoints/
+
+# -----------------------------------------------------------------------------
+# Secrets — NEVER commit
+# -----------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+credentials.json
