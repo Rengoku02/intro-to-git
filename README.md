@@ -33,5 +33,5 @@ Each section has an `exercises.md` (try first) and a `solutions.md` (check yours
 
 ## Contributing
 
-Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). The repo is MIT-licensed ([LICENSE](LICENSE)).
+Contributions are welcome — The repo is MIT-licensed ([LICENSE](LICENSE)).
 
